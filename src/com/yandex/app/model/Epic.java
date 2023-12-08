@@ -1,3 +1,5 @@
+package com.yandex.app.model;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -5,14 +7,9 @@ public class Epic extends Task {
 
     private final ArrayList<Integer> subtaskId = new ArrayList<>();
 
-    public Epic(String name, String description, TaskStatus status, int id) {
-        super(name, description, status, id);
+    public Epic(String name, String description) {
+        super(name, description, Status.NEW);
     }
-
-    public Epic(String name, String description, TaskStatus status) {
-        super(name, description, status);
-    }
-
 
     public void addSubtaskId(int id) {
         subtaskId.add(id);
@@ -33,11 +30,11 @@ public class Epic extends Task {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Epic epic = (Epic) o;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        if (!super.equals(obj)) return false;
+        Epic epic = (Epic) obj;
         return Objects.equals(subtaskId, epic.subtaskId);
     }
 
@@ -48,7 +45,7 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return "Epic{" +
+        return "com.yandex.app.model.Epic{" +
                 "subtaskId=" + subtaskId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

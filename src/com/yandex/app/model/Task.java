@@ -1,20 +1,15 @@
+package com.yandex.app.model;
+
 import java.util.Objects;
 
 public class Task {
 
     protected String name;
     protected String description;
-    protected TaskStatus status;
+    protected Status status;
     protected int id;
 
-    public Task(String name, String description, TaskStatus status, int id) {
-        this.name = name;
-        this.description = description;
-        this.status = status;
-        this.id = id;
-    }
-
-    public Task(String name, String description, TaskStatus status) {
+    public Task(String name, String description, Status status) {
         this.name = name;
         this.description = description;
         this.status = status;
@@ -36,11 +31,11 @@ public class Task {
         this.description = description;
     }
 
-    public TaskStatus getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(TaskStatus status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -68,7 +63,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "com.yandex.app.model.Task{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +

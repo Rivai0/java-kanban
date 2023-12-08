@@ -1,3 +1,5 @@
+package com.yandex.app.model;
+
 import java.util.Objects;
 
 public class Subtask extends Task {
@@ -5,12 +7,7 @@ public class Subtask extends Task {
 
     private int epicId;
 
-    public Subtask(String name, String description, TaskStatus status, int id, int epicId) {
-        super(name, description, status, id);
-        this.epicId = epicId;
-    }
-
-    public Subtask(String name, String description, TaskStatus status, int epicId) {
+    public Subtask(String name, String description, Status status, int epicId) {
         super(name, description, status);
         this.epicId = epicId;
     }
@@ -40,7 +37,7 @@ public class Subtask extends Task {
 
     @Override
     public String toString() {
-        return "Subtask{" +
+        return "com.yandex.app.model.Subtask{" +
                 "epicId=" + epicId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
