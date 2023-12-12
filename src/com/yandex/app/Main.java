@@ -66,10 +66,11 @@ public class Main {
         System.out.println(taskManager.getEpics());
         System.out.println("Подзадачи после удаления:");
         System.out.println(taskManager.getSubtasks());
-        
-        }
-        public static void printHistory(TaskManager taskManager) {
-            System.out.println("История просмотров:");
-            System.out.println(taskManager.getHistory());
-        }
+
     }
+
+    public static void printHistory(TaskManager taskManager) {
+        System.out.println("История просмотров:");
+        System.out.println(taskManager.getHistory());
+    }
+}
