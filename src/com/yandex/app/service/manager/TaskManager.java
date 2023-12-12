@@ -1,19 +1,19 @@
-package com.yandex.app.service;
+package com.yandex.app.service.manager;
 
-import com.yandex.app.model.*;
+import com.yandex.app.model.Epic;
+import com.yandex.app.model.Subtask;
+import com.yandex.app.model.Task;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 public interface TaskManager {
-    ArrayList<Task> getTasks();
+    List<Task> getTasks();
 
-    ArrayList<Subtask> getSubtasks();
+    List<Subtask> getSubtasks();
 
-    ArrayList<Epic> getEpics();
+    List<Epic> getEpics();
 
-    ArrayList<Subtask> getEpicSubtasks(int epicId);
+    List<Subtask> getEpicSubtasks(int epicId);
 
     Task getTask(int id);
 
@@ -37,7 +37,7 @@ public interface TaskManager {
 
     void deleteEpic(int id);
 
-    void deleteSubtask(int id);
+    void deleteSubtask(Subtask subtask);
 
     void deleteAllTasks();
 

@@ -1,11 +1,11 @@
 package com.yandex.app;
 
 import com.yandex.app.model.Epic;
+import com.yandex.app.model.Status;
 import com.yandex.app.model.Subtask;
 import com.yandex.app.model.Task;
-import com.yandex.app.model.Status;
-import com.yandex.app.service.Managers;
-import com.yandex.app.service.TaskManager;
+import com.yandex.app.service.manager.Managers;
+import com.yandex.app.service.manager.TaskManager;
 
 public class Main {
 
@@ -23,6 +23,7 @@ public class Main {
         Epic epic2 = new Epic("Эпик 2", "Описание эпика 2");
         final int epicId1 = taskManager.addNewEpic(epic1);
         final int epicId2 = taskManager.addNewEpic(epic2);
+        int epicId = taskManager.addNewEpic(epic1);
 
         Subtask subtask1 = new Subtask("Подзадача 1-1", "Описание подзадачи 1", Status.NEW, epicId1);
         Subtask subtask2 = new Subtask("Подзадача 2-1", "Описание подзадачи 2", Status.NEW, epicId2);
@@ -43,16 +44,19 @@ public class Main {
         taskStatus1.setStatus(Status.IN_PROGRESS);
         taskManager.updateTask(taskStatus1);
         System.out.println("Статус Задачи 1: " + taskManager.getTask(taskId1).getStatus());
+        printHistory(taskManager);
 
         Subtask subtaskStatus1 = taskManager.getSubtask(subtaskId1);
         subtaskStatus1.setStatus(Status.IN_PROGRESS);
         taskManager.updateSubtask(subtaskStatus1);
         System.out.println("Статус Подзадачи 1-1: " + taskManager.getSubtask(subtaskId1).getStatus());
-
+        printHistory(taskManager);
 
         System.out.println("Удаление:");
         taskManager.deleteTask(taskId1);
         System.out.println("Удалена Задача 1");
+        printHistory(taskManager);
+
         taskManager.deleteEpic(epicId1);
         System.out.println("Удален Эпик 1");
 
@@ -62,7 +66,10 @@ public class Main {
         System.out.println(taskManager.getEpics());
         System.out.println("Подзадачи после удаления:");
         System.out.println(taskManager.getSubtasks());
-
-
+        
+        }
+        public static void printHistory(TaskManager taskManager) {
+            System.out.println("История просмотров:");
+            System.out.println(taskManager.getHistory());
+        }
     }
-}

@@ -1,18 +1,20 @@
-package com.yandex.app.service;
+package com.yandex.app.service.history;
 
 import com.yandex.app.model.Task;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
-    private List<Task> viewedTasks = new ArrayList<>();
+    private static final int MAX_HISTORY_SIZE = 10;
+    private final LinkedList<Task> viewedTasks = new LinkedList<>();
 
     @Override
     public void add(Task task) {
-        if (!viewedTasks.contains(task)) {
-            if (viewedTasks.size() >= 10) {
-                viewedTasks.remove(0);
+        if (task != null && !viewedTasks.contains(task)) {
+            if (viewedTasks.size() >= MAX_HISTORY_SIZE) {
+                viewedTasks.removeFirst();
             }
             viewedTasks.add(task);
         }

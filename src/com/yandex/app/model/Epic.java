@@ -1,32 +1,32 @@
 package com.yandex.app.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Epic extends Task {
 
-    private final ArrayList<Integer> subtaskId = new ArrayList<>();
+    private final List<Subtask> subtasks = new ArrayList<>();
 
     public Epic(String name, String description) {
         super(name, description, Status.NEW);
     }
 
-    public void addSubtaskId(int id) {
-        subtaskId.add(id);
+    public void addSubtask(Subtask subtask) {
+        subtasks.add(subtask);
     }
 
-
-    public ArrayList<Integer> getSubtaskId() {
-        return subtaskId;
+    public List<Subtask> getSubtasks() {
+        return subtasks;
     }
 
 
     public void cleanSubtaskId() {
-        subtaskId.clear();
+        subtasks.clear();
     }
 
-    public void removeSubtask(int id) {
-        subtaskId.remove(Integer.valueOf(id));
+    public void removeSubtask(Subtask subtask) {
+        subtasks.remove(subtask);
     }
 
     @Override
@@ -35,18 +35,18 @@ public class Epic extends Task {
         if (obj == null || getClass() != obj.getClass()) return false;
         if (!super.equals(obj)) return false;
         Epic epic = (Epic) obj;
-        return Objects.equals(subtaskId, epic.subtaskId);
+        return Objects.equals(subtasks, epic.subtasks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), subtaskId);
+        return Objects.hash(super.hashCode(), subtasks);
     }
 
     @Override
     public String toString() {
         return "com.yandex.app.model.Epic{" +
-                "subtaskId=" + subtaskId +
+                "subtaskId=" + subtasks +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
